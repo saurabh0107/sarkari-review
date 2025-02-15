@@ -1,4 +1,4 @@
-import { CTASection, Header, HeroSection, TestimonialSection } from "@/components/Home.index";
+import { CTASection, Header, HeroSection, TestimonialSection,Footer } from "@/components/Home.index";
 import Image from "next/image";
 import JobAlert from  '../components/JobAlert'
 export default function Home() {
@@ -8,6 +8,7 @@ export default function Home() {
       <HeroSection />
       <JobAlert />
       <CTASection />
+      <Footer/>
     </div>
   );
 }

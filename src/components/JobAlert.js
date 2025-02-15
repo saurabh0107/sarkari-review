@@ -34,7 +34,7 @@ const JobPortalUI = () => {
         {/* Study Materials Section */}
         <div className="bg-white p-6 rounded-2xl shadow-md w-full">
           <h2 className="text-xl font-bold text-center">Study Materials</h2>
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 space-y-3 grid">
           <Link href="https://www.ambitionbox.com/">
         <button className="w-full bg-purple-500 text-white py-2 px-4 rounded-lg">Download PDFs</button>
       </Link>

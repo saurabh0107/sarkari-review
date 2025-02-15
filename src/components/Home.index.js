@@ -120,3 +120,19 @@ export const CTASection = () => {
 };
 
 
+
+export const Footer = () =>{
+  return(
+    <div>
+      <footer className="bg-gray-900 text-white p-4 text-center mt-8">
+        <p>&copy; 2025 SarkariReview. All rights reserved.</p>
+      </footer>
+
+    </div>
+  )
+}
+
+
+
+
+
