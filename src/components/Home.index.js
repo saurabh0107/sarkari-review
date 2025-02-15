@@ -4,6 +4,8 @@ import { FaSearch } from "react-icons/fa";
 import SearchBar from "./SearchBar";
 import Select from "react-select";
 import JobAlert from './JobAlert'
+import { motion } from "framer-motion";
+
 export const Header = () => {
 
   const [showForm, setShowForm] = useState(false);
@@ -29,13 +31,20 @@ export const Header = () => {
       </nav>
     </div>
     <div className="flex space-x-4">
-      <button 
-        className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600"
+    <motion.button
+          animate={{ scale: [1, 1.1, 1] }}
+         
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-yellow-600"      >
+        Write a Review
+      </motion.button>
+      {/* <button 
+        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-yellow-600"
         onClick={() => setShowForm(true)}
       >
-        Reviews
-      </button>
-      <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Register</button>
+        Write a Reviews
+      </button> */}
+      <button className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-blue-600">Register</button>
       <button className="text-gray-700 hover:text-gray-900">Login</button>
     </div>
     
