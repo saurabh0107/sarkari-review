@@ -76,20 +76,152 @@
 
 
 
+// import React from "react";
+// import Img from "../assets/images/profile.jpg"
+// import Image from "next/image";
+// const ReviewCard = ({ review }) => {
+//   return (
+//     <div className="border rounded-lg shadow-lg w-[260px] p-4 bg-white">
+//       {/* Badge for "Review of the Day" */}
+//       {review.isFeatured && (
+//         <div className="bg-purple-600 text-white text-sm font-bold p-1 text-center rounded-t-md">
+//           REVIEW OF THE DAY
+//         </div>
+//       )}
+
+//       {/* Company Image */}
+//       <div className="flex justify-center">
+//         <Image
+//           width={500}
+//           height={400}
+//           src={Img}
+//           alt={""}
+//           className="h-24 object-cover my-2"
+//         />
+//       </div>
+
+//       {/* User Information */}
+//       <div className="flex items-center gap-2">
+//         <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+//           <span className="text-gray-600 text-sm font-bold">{review.username.charAt(0)}</span>
+//         </div>
+//         <p className="text-sm font-semibold text-green-600">{review.username}</p>
+//       </div>
+
+//       <p className="text-gray-500 text-xs mt-1">{review.timeAgo}</p>
+
+//       {/* Star Rating */}
+//       <div className="flex mt-2">
+//         {Array(5)
+//           .fill(0)
+//           .map((_, index) => (
+//             <span
+//               key={index}
+//               className={`text-lg ${index < review.rating ? "text-yellow-500" : "text-gray-300"}`}
+//             >
+//               ★
+//             </span>
+//           ))}
+//       </div>
+
+//       {/* Review Content */}
+//       <h3 className="font-semibold mt-2">{review.company}</h3>
+//       <p className="text-gray-500 text-sm">{review.reviewText}</p>
+
+//       {/* Read More Button */}
+//       <a href="#" className="text-green-600 text-sm font-semibold mt-3 inline-block">
+//         Read Complete Review →
+//       </a>
+//     </div>
+//   );
+// };
+
+// // Sample Data for Testing
+// const reviews = [
+//   {
+//     isFeatured: true,
+//     username: "surabhi19",
+//     timeAgo: "5 days ago",
+//     rating: 2,
+//     company: "Mere Husband Ki Biwi",
+//     reviewText: "Can Avoid Watching This Movie!!",
+//     image: "../assets/images/profile.jpg", // Replace with actual image
+//   },
+//   {
+//     isFeatured: false,
+//     username: "shrutyb",
+//     timeAgo: "0 hrs 23 mins ago",
+//     rating: 1,
+//     company: "Delhivery",
+//     reviewText: "Delhivery courier",
+//     image: "../assets/images/profile.jpg",
+//   },
+//   {
+//     isFeatured: false,
+//     username: "shrutyb",
+//     timeAgo: "0 hrs 23 mins ago",
+//     rating: 1,
+//     company: "Delhivery",
+//     reviewText: "Delhivery courier",
+//     image: "../assets/images/profile.jpg",
+//   },
+//   {
+//     isFeatured: false,
+//     username: "shrutyb",
+//     timeAgo: "0 hrs 23 mins ago",
+//     rating: 1,
+//     company: "Delhivery",
+//     reviewText: "Delhivery courier",
+//     image: "../assets/images/profile.jpg",
+//   },
+//   {
+//     isFeatured: false,
+//     username: "shrutyb",
+//     timeAgo: "0 hrs 23 mins ago",
+//     rating: 1,
+//     company: "Delhivery",
+//     reviewText: "Delhivery courier",
+//     image: "../assets/images/profile.jpg",
+//   },
+// ];
+
+// const ReviewList = () => {
+//   return (
+//     <div className="flex gap-4 overflow-x-auto p-4">
+//       {reviews.map((review, index) => (
+//         <ReviewCard key={index} review={review} />
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default ReviewList;
+
+
+
+
+
+
+
+
+
 import React from "react";
-import Img from "../assets/images/profile.jpg"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Img from "../assets/images/profile.jpg";
 import Image from "next/image";
+
 const ReviewCard = ({ review }) => {
   return (
     <div className="border rounded-lg shadow-lg w-[260px] p-4 bg-white">
-      {/* Badge for "Review of the Day" */}
-      {review.isFeatured && (
+      {/* {review.isFeatured && (
         <div className="bg-purple-600 text-white text-sm font-bold p-1 text-center rounded-t-md">
           REVIEW OF THE DAY
         </div>
-      )}
-
-      {/* Company Image */}
+      )} */}
       <div className="flex justify-center">
         <Image
           width={500}
@@ -99,18 +231,13 @@ const ReviewCard = ({ review }) => {
           className="h-24 object-cover my-2"
         />
       </div>
-
-      {/* User Information */}
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
           <span className="text-gray-600 text-sm font-bold">{review.username.charAt(0)}</span>
         </div>
         <p className="text-sm font-semibold text-green-600">{review.username}</p>
       </div>
-
       <p className="text-gray-500 text-xs mt-1">{review.timeAgo}</p>
-
-      {/* Star Rating */}
       <div className="flex mt-2">
         {Array(5)
           .fill(0)
@@ -123,12 +250,8 @@ const ReviewCard = ({ review }) => {
             </span>
           ))}
       </div>
-
-      {/* Review Content */}
       <h3 className="font-semibold mt-2">{review.company}</h3>
       <p className="text-gray-500 text-sm">{review.reviewText}</p>
-
-      {/* Read More Button */}
       <a href="#" className="text-green-600 text-sm font-semibold mt-3 inline-block">
         Read Complete Review →
       </a>
@@ -136,63 +259,59 @@ const ReviewCard = ({ review }) => {
   );
 };
 
-// Sample Data for Testing
 const reviews = [
-  {
-    isFeatured: true,
-    username: "surabhi19",
-    timeAgo: "5 days ago",
-    rating: 2,
-    company: "Mere Husband Ki Biwi",
-    reviewText: "Can Avoid Watching This Movie!!",
-    image: "../assets/images/profile.jpg", // Replace with actual image
-  },
-  {
-    isFeatured: false,
-    username: "shrutyb",
-    timeAgo: "0 hrs 23 mins ago",
-    rating: 1,
-    company: "Delhivery",
-    reviewText: "Delhivery courier",
-    image: "../assets/images/profile.jpg",
-  },
-  {
-    isFeatured: false,
-    username: "shrutyb",
-    timeAgo: "0 hrs 23 mins ago",
-    rating: 1,
-    company: "Delhivery",
-    reviewText: "Delhivery courier",
-    image: "../assets/images/profile.jpg",
-  },
-  {
-    isFeatured: false,
-    username: "shrutyb",
-    timeAgo: "0 hrs 23 mins ago",
-    rating: 1,
-    company: "Delhivery",
-    reviewText: "Delhivery courier",
-    image: "../assets/images/profile.jpg",
-  },
-  {
-    isFeatured: false,
-    username: "shrutyb",
-    timeAgo: "0 hrs 23 mins ago",
-    rating: 1,
-    company: "Delhivery",
-    reviewText: "Delhivery courier",
-    image: "../assets/images/profile.jpg",
-  },
+  { isFeatured: true, username: "surabhi19", timeAgo: "5 days ago", rating: 2, company: "Mere Husband Ki Biwi", reviewText: "Can Avoid Watching This Movie!!", image: "../assets/images/profile.jpg" },
+  { isFeatured: false, username: "shrutyb", timeAgo: "0 hrs 23 mins ago", rating: 1, company: "Delhivery", reviewText: "Delhivery courier", image: "../assets/images/profile.jpg" },
+  { isFeatured: false, username: "shrutyb", timeAgo: "0 hrs 23 mins ago", rating: 1, company: "Delhivery", reviewText: "Delhivery courier", image: "../assets/images/profile.jpg" },
+  { isFeatured: false, username: "shrutyb", timeAgo: "0 hrs 23 mins ago", rating: 1, company: "Delhivery", reviewText: "Delhivery courier", image: "../assets/images/profile.jpg" },
+  { isFeatured: false, username: "shrutyb", timeAgo: "0 hrs 23 mins ago", rating: 1, company: "Delhivery", reviewText: "Delhivery courier", image: "../assets/images/profile.jpg" },
 ];
 
 const ReviewList = () => {
   return (
-    <div className="flex gap-4 overflow-x-auto p-4">
-      {reviews.map((review, index) => (
-        <ReviewCard key={index} review={review} />
-      ))}
-    </div>
+    // <section className="px-10 py-16 bg-gray-100">
+    //   <Swiper
+    //     modules={[Pagination, Navigation]}
+    //     spaceBetween={10}
+    //     slidesPerView={1}
+    //     breakpoints={{
+    //       768: { slidesPerView: 2 },
+    //       1024: { slidesPerView: 3 },
+    //     }}
+    //     pagination={{ clickable: true }}
+    //     navigation
+    //     className="pb-10"
+    //   >
+    //     {reviews.map((review, index) => (
+    //       <SwiperSlide key={index}>
+    //         <ReviewCard review={review} />
+    //       </SwiperSlide>
+    //     ))}
+    //   </Swiper>
+    // </section>
+    <section className="px-4 md:px-10 py-16 bg-gray-100">
+  <Swiper
+    modules={[Pagination, Navigation]}
+    spaceBetween={20}
+    slidesPerView={1}
+    breakpoints={{
+      768: { slidesPerView: 2, spaceBetween: 15 },
+      1024: { slidesPerView: 3, spaceBetween: 20 },
+    }}
+    pagination={{ clickable: true }}
+    navigation
+    className="pb-10"
+  >
+    {reviews.map((review, index) => (
+      <SwiperSlide style={{ flexShrink: 1 }} key={index} className="flex">
+        <ReviewCard review={review} />
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</section>
+
   );
 };
 
 export default ReviewList;
+
