@@ -43,7 +43,8 @@ export default async function Home() {
     groups = response.data;
   } catch (error) {
     console.error("Error fetching groups:", error);
-    return <>No groups found</>;
+    // return <>No groups found</>;
+        return <HomeClient groups={[]} />;
   }
 
   return <HomeClient groups={groups} />;
