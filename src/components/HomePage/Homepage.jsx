@@ -1,24 +1,24 @@
 'use client'
 import React ,{ useEffect, useState } from 'react'
-import { FaSearch, FaBell, FaStar, FaCalendarAlt, FaComments, FaBook, FaBriefcase, FaUserGraduate, FaClock } from "react-icons/fa";
+import { FaSearch, FaBell, FaStar, FaCalendarAlt, FaComments, FaBook, FaBriefcase, FaUserGraduate, FaClock, FaLinkedin, FaTwitter, FaEnvelopeOpenText } from "react-icons/fa";
 import { motion } from "framer-motion";
 import SearchBar from "../../components/SearchBar"
-import ReviewList from '../ReviewList';
-import GovtJobsImg from "../../assets/images/govtjob.webp"
-import MentorshipImg from '../../assets/images/mntrship.jpg'
-import PracticeImg from '../../assets/images/Current-Affairs-.webp'
-import CurrentAffairsImg from '../../assets/images/Current-Affairs-.webp'
-
 import Image from 'next/image';
+import Exam from '../../assets/images/exam.webp'
+import Profile from '../../assets/images/profile.jpg'
+import { useRouter } from 'next/navigation';
+import SarkariReviewList from "../../app/review-list/page.js";
 
 function Homepage({groups}) {
     const [isHovered, setIsHovered] = useState(false);
+    const router = useRouter();
 
-
-
-
-
-
+     const links = [
+    { text: "RRB Paramedical Post Exam Date 2025", color: "text-purple-700" },
+    { text: "Railway RRB ALP Stage II Admit Card 2025", color: "text-purple-700" },
+    { text: "SSC Constable GD Answer Key", color: "text-orange-700" },
+    { text: "UPSSSC Junior Assistant 2025", color: "text-orange-700" },
+  ];
 // create  a redux store and store every api data fetched till here 
 useEffect(()=>{
      
@@ -30,67 +30,70 @@ useEffect(()=>{
 
 <div>
 <div className="bg-white text-gray-900 min-h-screen font-sans">
- 
-   {/* Scrolling Links */}
-   <div className="bg-blue-100 py-3 overflow-hidden relative w-full">
-        <motion.div 
-          className="flex space-x-10 whitespace-nowrap"
+
+
+   <div className="bg-yellow-50 border-l-4 border-yellow-400 py-2 pl-2 pr-4 overflow-hidden w-full flex items-center space-x-4">
+      
+      {/* Static Important Label */}
+      <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded shrink-0">
+        Important
+      </span>
+
+      {/* Scrolling Links Section */}
+      <div className="relative w-full overflow-hidden">
+        <motion.div
+          className="flex space-x-6 whitespace-nowrap"
           animate={isHovered ? {} : { x: ["0%", "-50%", "0%"] }}
-          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+          transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {["Sarkari Result Updates", "UPSC Exam Notifications", "Latest Job Alerts 2025", "JEEMain & NEET Updates", "Bihar Police Recruitment", "SSC CGL Latest News"].map((text, index) => (
-            <a key={index} href="#" className="text-blue-700 font-semibold mx-4">{text}</a>
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href="#"
+              className={`${link.color} font-medium text-sm hover:underline`}
+            >
+              ● {link.text}
+            </a>
           ))}
         </motion.div>
-        
       </div>
-
-    {/* Hero Section */}
-    <section className="text-center py-16 px-6">
-      <h2 className="text-4xl font-bold text-blue-600">India's No. 1 Sarkari Reviews Plateform</h2>
-      <p className="text-gray-700 mt-3 text-lg">Helping aspirants with the best insights and updates</p>
-
-      <SearchBar groups={groups}/>
-       {/* Trending Searches */}
-       <div className="mt-4 flex flex-wrap justify-center gap-3 text-blue-600 font-medium">
-        <span className="bg-white px-4 py-2 rounded-lg shadow cursor-pointer hover:bg-blue-100">UPSC</span>
-        <span className="bg-white px-4 py-2 rounded-lg shadow cursor-pointer hover:bg-blue-100">SSC CGL</span>
-        <span className="bg-white px-4 py-2 rounded-lg shadow cursor-pointer hover:bg-blue-100">Railway Exams</span>
-        <span className="bg-white px-4 py-2 rounded-lg shadow cursor-pointer hover:bg-blue-100">Banking Exams</span>
-      </div>
-      {/* <div className="flex justify-center mt-6">
-        <input type="text" placeholder="Enter category / services / review..." className="p-3 w-1/3 rounded-l-lg border border-gray-300 text-black" />
-        <button className="bg-blue-600 p-3 rounded-r-lg hover:bg-blue-700 text-white"><FaSearch /></button>
-      </div> */}
-    </section>
+    </div>
 
 
 
+
+<SearchBar groups={groups}/>
+
+
+ 
     {/* Features Section */}
 
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-10 py-8 bg-white">
+  {/* Exam Reviews Card */}
+  <div onClick={() => router.push('/review-list')}
+ className="bg-indigo-50 border border-indigo-200 p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all text-center">
+    <div className="text-5xl text-indigo-600 mb-4">📚</div>
+    <h2 className="text-2xl font-bold text-indigo-700">Exam Reviews</h2>
+    <p className="text-gray-600">Analysis and reviews on government exams.</p>
+  </div>
 
-    <section className="px-10 py-16 bg-gray-100">
-        {/* <h2 className="text-3xl font-semibold text-center mb-8">Our Features</h2> */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <motion.div whileHover={{ scale: 1.05 }} className="p-6 bg-white rounded-xl shadow-md text-center">
-            <FaBook className="text-4xl text-blue-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold">Exam Reviews</h3>
-            <p>Detailed analysis and reviews on government exams.</p>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} className="p-6 bg-white rounded-xl shadow-md text-center">
-            <FaBriefcase className="text-4xl text-blue-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold">Job Alerts</h3>
-            <p>Stay updated on the latest job notifications.</p>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} className="p-6 bg-white rounded-xl shadow-md text-center">
-            <FaUserGraduate className="text-4xl text-blue-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold">Student Experiences</h3>
-            <p>Read experiences of successful candidates.</p>
-          </motion.div>
-        </div>
-      </section>
+  {/* Job Alerts Card */}
+  <div className="bg-blue-50 border border-blue-200 p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all text-center">
+    <div className="text-5xl text-blue-500 mb-4">💼</div>
+    <h2 className="text-2xl font-bold text-blue-700">Job Alerts</h2>
+    <p className="text-gray-600">Stay updated on the latest job notifications.</p>
+  </div>
+
+  {/* Student Experiences Card */}
+  <div className="bg-yellow-50 border border-yellow-200 p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all text-center">
+    <div className="text-5xl text-yellow-500 mb-4">🎓</div>
+    <h2 className="text-2xl font-bold text-yellow-700">Student Experiences</h2>
+    <p className="text-gray-600">Read experiences of successful candidates.</p>
+  </div>
+</div>
+
 
 
       
@@ -100,10 +103,52 @@ useEffect(()=>{
 
     {/* Review section */}
 
-    <section className="px-10 py-16 bg-gray-50">
+    {/* <section className="px-10 py-16 bg-gray-50">
         <h2 className="text-4xl font-semibold text-center mb-12">Latest review by aspirants</h2>
         <ReviewList/>
+      </section> */}
+
+
+       {/* Featured Exams */}
+      <section className="py-20 px-6 bg-gradient-to-r from-gray-100 via-white to-gray-100">
+        <h2 className="text-4xl font-bold text-center mb-12">🏆 Featured Exams</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
+          {["UPSC", "SSC", "IBPS", "Railway", "Defence", "Teaching"].map((exam, i) => (
+            <motion.div whileHover={{ y: -5 }} key={i} className="bg-white p-6 rounded-lg shadow hover:shadow-xl">
+              <h3 className="text-xl font-semibold text-blue-800 mb-2">{exam}</h3>
+              <p className="text-sm text-gray-600">Explore opportunities and resources</p>
+            </motion.div>
+          ))}
+        </div>
       </section>
+
+      {/* Preparation Hub */}
+      <section className="py-20 px-6">
+        <h2 className="text-4xl font-bold text-center mb-12">🧠 Preparation Hub</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {["Study Materials", "Previous Papers", "Video Lectures", "Mock Tests"].map((item, i) => (
+            <motion.div whileHover={{ rotate: 1 }} key={i} className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl text-center border-b-4 border-blue-400">
+              <h4 className="text-lg font-semibold text-blue-900">{item}</h4>
+              <p className="text-sm text-gray-600">Start now</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Current Affairs */}
+      <section className="bg-white py-20 px-6">
+        <h2 className="text-4xl font-bold text-center mb-12">📰 Daily Current Affairs</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {["India signs space treaty with EU", "Budget 2025 highlights", "ISRO launches 3 satellites"].map((news, i) => (
+            <motion.div whileHover={{ scale: 1.03 }} key={i} className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-md hover:shadow-xl">
+              <h4 className="font-bold text-blue-800 text-lg mb-2">🗞 {news}</h4>
+              <p className="text-sm text-gray-600">Tap to read our summary and key takeaways.</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* <UserProfile/> */}
    
 
     <div className="font-sans bg-white px-10 py-12">
@@ -151,74 +196,52 @@ useEffect(()=>{
             </div>
           ))}
         </div>
+
+
+       
+
+        
       </div>
 
-      {/* Who's using section */}
-      {/* <div className="mt-12 w-full">
-        <h2 className="text-xl font-bold text-gray-900">Who's using sarkari review</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          {[
-            {
-              title: "Students and Professionals",
-              desc: "Unlock Your Potential: Compete, Build Resume, Grow and get Hired!",
-              bg: "bg-gray-100",
-            },
-            {
-              title: "Companies and Recruiters",
-              desc: "Discover Right Talent: Hire, Engage, and Brand Like Never Before!",
-              bg: "bg-gray-100",
-            },
-            {
-              title: "Colleges",
-              desc: "Bridge Academia and Industry: Empower Students with Real-World Opportunities!",
-              bg: "bg-gray-100",
-            },
-          ].map((item, index) => (
-            <div key={index} className={`p-4 rounded-lg shadow-md ${item.bg}`}>
-              <h3 className="font-semibold text-md">{item.title}</h3>
-              <p className="text-sm text-gray-600">{item.desc}</p>
-            </div>
-          ))}
+
+    </div>
+
+
+     <section className="py-20 px-6 bg-white">
+        <h2 className="text-4xl font-bold text-center mb-12">👨‍💼 Meet Our CEO</h2>
+        <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-lg text-center border border-blue-100">
+          <Image
+            src={Profile}
+            alt="CEO Profile"
+            className="mx-auto rounded-full w-36 h-36 object-cover shadow-md mb-4"
+          />
+          <h3 className="text-2xl font-bold text-blue-900 mb-1">Saurabh Singh</h3>
+          <p className="text-blue-600 font-medium italic mb-4">Founder & CEO</p>
+          <p className="text-sm text-gray-700 mb-6">
+            Saurabh is the visionary behind SarkariReview.com. With a mission to simplify government job access, he is empowering millions of aspirants with timely updates, insights, and preparation tools.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a href="#" className="text-blue-700 hover:text-blue-900 text-xl">
+              <FaLinkedin />
+            </a>
+            <a href="#" className="text-blue-400 hover:text-blue-600 text-xl">
+              <FaTwitter />
+            </a>
+            <a href="mailto:saurabh@sarkarireview.com" className="text-red-500 hover:text-red-700 text-xl">
+              <FaEnvelopeOpenText />
+            </a>
+          </div>
         </div>
-      </div> */}
-
-    </div>
-
-
-    </div>
-
-
-
-     
-
-   
-    <section className="px-10 py-16 bg-gray-50">
-        <h2 className="text-4xl font-semibold text-center mb-12">Latest review by aspirants</h2>
-        <ReviewList/>
-
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="p-8 bg-white rounded-xl shadow-xl">
-            <p className="italic text-lg">“This platform helped me understand exam patterns better.”</p>
-            <h4 className="mt-6 font-semibold text-blue-600">- Rahul Sharma</h4>
-          </div>
-          <div className="p-8 bg-white rounded-xl shadow-xl">
-            <p className="italic text-lg">“Accurate job alerts saved me time and effort.”</p>
-            <h4 className="mt-6 font-semibold text-blue-600">- Priya Verma</h4>
-          </div>
-          <div className="p-8 bg-white rounded-xl shadow-xl">
-            <p className="italic text-lg">“User experiences are truly motivating and insightful.”</p>
-            <h4 className="mt-6 font-semibold text-blue-600">- Aman Gupta</h4>
-          </div>
-        </div> */}
       </section>
 
+
+    </div>
+
+
   
+
+
   </div>
-       {/* <Header />
-      <HeroSection />
-      <JobAlert />
-      <CTASection />
-      <Footer/> */}
     </div>
    </>
   )
