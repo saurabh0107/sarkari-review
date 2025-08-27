@@ -1,6 +1,6 @@
 'use client'
 import React ,{ useEffect, useState } from 'react'
-import { FaSearch, FaBell, FaStar, FaCalendarAlt, FaComments, FaBook, FaBriefcase, FaUserGraduate, FaClock, FaLinkedin, FaTwitter, FaEnvelopeOpenText } from "react-icons/fa";
+import { FaSearch, FaBell, FaStar, FaCalendarAlt, FaComments, FaBook, FaBriefcase, FaUserGraduate, FaClock, FaLinkedin, FaTwitter, FaEnvelopeOpenText, FaUsers, FaBookOpen } from "react-icons/fa";
 import { motion } from "framer-motion";
 import SearchBar from "../../components/SearchBar"
 import Image from 'next/image';
@@ -119,6 +119,29 @@ useEffect(()=>{
               <p className="text-sm text-gray-600">Explore opportunities and resources</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+
+       <section className="py-16 bg-blue-800 text-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+              <FaUsers className="text-4xl mx-auto mb-4" />
+              <h3 className="text-4xl font-bold mb-2">50,000+</h3>
+              <p className="text-xl">Successful Candidates</p>
+            </div>
+            <div>
+              <FaBookOpen className="text-4xl mx-auto mb-4" />
+              <h3 className="text-4xl font-bold mb-2">1000+</h3>
+              <p className="text-xl">Study Materials</p>
+            </div>
+            <div>
+              <FaBell className="text-4xl mx-auto mb-4" />
+              <h3 className="text-4xl font-bold mb-2">500+</h3>
+              <p className="text-xl">Exam Notifications</p>
+            </div>
+          </div>
         </div>
       </section>
 

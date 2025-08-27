@@ -46,7 +46,10 @@ export const Header = () => {
     <header className="flex justify-between items-center px-6 py-4 shadow-md bg-white relative">
       {/* Left Section */}
       <div className="flex items-center space-x-4">
-        <div className="text-xl font-bold text-indigo-600">SarkariReview</div>
+        {/* <div className="text-xl font-bold text-indigo-600">Sarkari<span className="text-orange-600">Review</span></div> */}
+         <div className="flex items-center">
+            <h2 className="text-2xl font-bold text-blue-800">Sarkari<span className="text-orange-600">Review</span>.com</h2>
+          </div>
         <nav className="hidden md:flex space-x-4">
           <a href="#" className="text-gray-700 hover:text-indigo-600">
             Home
@@ -80,7 +83,9 @@ export const Header = () => {
         {/* Show Register & Login only if not logged in */}
         {!IsLoggedIn ? (
           <>
-            <button className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-md text-white transition duration-300">
+            <button 
+            onClick={() => setshowLoginForm(true)}
+            className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-md text-white transition duration-300">
               Register
             </button>
             <button
